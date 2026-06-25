@@ -192,12 +192,7 @@ function Logo() {
           <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="currentColor" />
         </svg>
       </div>
-      <div className="leading-none">
-        <div className="font-display text-base font-bold tracking-tight">LUMINA</div>
-        <div className="text-[10px] font-medium tracking-[0.18em] text-muted-foreground">
-          ORTODONCIA INVISIBLE
-        </div>
-      </div>
+     <img src="/logo alargado negro.png" alt="Logo" className="h-8 w-auto" />
     </a>
   );
 }
