@@ -23,12 +23,12 @@ import smileBefore from "@/assets/smile-before.jpg";
 import smileAfter from "@/assets/smile-after.jpg";
 
 const NAV = [
-  { label: "Technology", href: "#technology" },
-  { label: "Process", href: "#process" },
-  { label: "Results", href: "#results" },
-  { label: "Benefits", href: "#benefits" },
-  { label: "Stories", href: "#stories" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Tecnología", href: "#technology" },
+  { label: "Proceso", href: "#process" },
+  { label: "Resultados", href: "#results" },
+  { label: "Beneficios", href: "#benefits" },
+  { label: "Historias", href: "#stories" },
+  { label: "Preguntas", href: "#faq" },
 ];
 
 export function LuminaSite() {
@@ -103,7 +103,7 @@ function Nav() {
               href="#cta"
               className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-foreground backdrop-blur transition hover:border-primary/40 hover:bg-primary/10 sm:inline-flex"
             >
-              Book Evaluation
+              Reservar evaluación
               <ArrowUpRight className="h-4 w-4" />
             </a>
             <button
@@ -151,7 +151,7 @@ function Logo() {
       <div className="leading-none">
         <div className="font-display text-base font-bold tracking-tight">LUMINA</div>
         <div className="text-[10px] font-medium tracking-[0.18em] text-muted-foreground">
-          INVISIBLE ORTHODONTICS
+          ORTODONCIA INVISIBLE
         </div>
       </div>
     </a>
@@ -197,20 +197,18 @@ function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
               </span>
-              NEXT GENERATION INVISIBLE ORTHODONTICS
+              ORTODONCIA INVISIBLE DE NUEVA GENERACIÓN
             </div>
 
             <h1 className="mt-6 font-display text-[40px] font-semibold leading-[1.02] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-7xl">
-              The smile you want.
+              La sonrisa que querés.
               <br />
-              <span className="text-gradient-cyan">Powered by</span>{" "}
-              <span className="text-gradient">precision technology.</span>
+              <span className="text-gradient-cyan">Impulsada por</span>{" "}
+              <span className="text-gradient">tecnología de precisión.</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Advanced 3D scanning and custom invisible aligners designed to create
-              predictable, comfortable and precise results — engineered with the rigor
-              of a technology company.
+              Escaneo 3D avanzado y alineadores invisibles a medida, diseñados para lograr resultados predecibles, cómodos y precisos — con el rigor de una compañía de tecnología.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -219,22 +217,22 @@ function Hero() {
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_40px_-6px_oklch(0.83_0.14_208/0.7)] transition-transform hover:scale-[1.02]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                Book Evaluation
+                Reservar evaluación
                 <ArrowUpRight className="h-4 w-4" />
               </a>
               <a
                 href="#technology"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition hover:border-white/30 hover:bg-white/10"
               >
-                Learn More
+                Conocer más
               </a>
             </div>
 
             <div className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-6">
               {[
-                { k: "3D", v: "High-precision scanning" },
-                { k: "AI", v: "Treatment planning" },
-                { k: "100%", v: "Custom aligners" },
+                { k: "3D", v: "Escaneo de alta precisión" },
+                { k: "AI", v: "Planificación de tratamiento" },
+                { k: "100%", v: "Alineadores a medida" },
               ].map((s) => (
                 <div key={s.k}>
                   <div className="font-display text-2xl font-semibold text-foreground">{s.k}</div>
@@ -282,7 +280,7 @@ function HeroVisual({ tilt }: { tilt: { x: number; y: number } }) {
         <div className="absolute inset-[8%] overflow-hidden rounded-[32px] border border-white/10 bg-surface/40 shadow-[0_30px_120px_-20px_oklch(0.83_0.14_208/0.45)] backdrop-blur">
           <img
             src={heroTeeth}
-            alt="Digital orthodontic scan"
+            alt="Escaneo ortodóntico digital"
             width={1280}
             height={1280}
             className="h-full w-full object-cover"
@@ -299,7 +297,7 @@ function HeroVisual({ tilt }: { tilt: { x: number; y: number } }) {
           </div>
           {/* Holographic tag */}
           <div className="absolute right-3 top-3 flex flex-col gap-1.5">
-            {["AI SIMULATION", "3D SCAN", "ALIGNMENT", "PREDICTABLE"].map((t) => (
+            {["SIMULACIÓN IA", "ESCANEO 3D", "ALINEACIÓN", "PREDECIBLE"].map((t) => (
               <div
                 key={t}
                 className="flex items-center gap-2 rounded-md border border-primary/30 bg-background/60 px-2.5 py-1.5 text-[10px] font-medium tracking-wider text-primary backdrop-blur"
@@ -310,7 +308,7 @@ function HeroVisual({ tilt }: { tilt: { x: number; y: number } }) {
             ))}
           </div>
           <div className="absolute bottom-3 left-3 rounded-md border border-white/10 bg-background/60 px-2.5 py-1.5 font-mono text-[10px] text-muted-foreground backdrop-blur">
-            LUMINA · v3.2 · live
+            LUMINA · v3.2 · en vivo
           </div>
         </div>
       </div>
@@ -342,7 +340,7 @@ function Logos() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
           <span className="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground/70">
-            Powered by industry leading technology
+            Con tecnología líder de la industria
           </span>
           {items.map((i) => (
             <span key={i} className="font-display text-base font-semibold tracking-tight text-muted-foreground/80">
@@ -360,37 +358,37 @@ function Technology() {
   const cards = [
     {
       icon: ScanLine,
-      title: "3D Scanning",
-      desc: "Intraoral scanners capture every detail of your smile at micron precision — no impressions, no discomfort.",
+      title: "Escaneo 3D",
+      desc: "Escáneres intraorales que capturan cada detalle de tu sonrisa con precisión micrométrica — sin moldes, sin molestias.",
     },
     {
       icon: Cpu,
-      title: "Digital Planning",
-      desc: "AI-assisted treatment plans simulate every tooth movement before you start. See your result first.",
+      title: "Planificación Digital",
+      desc: "Planes de tratamiento asistidos por IA que simulan cada movimiento dental antes de empezar. Vé tu resultado primero.",
     },
     {
       icon: Layers,
-      title: "Invisible Aligners",
-      desc: "Custom-fabricated, ultra-thin aligners engineered for comfort, clarity, and continuous progress.",
+      title: "Alineadores Invisibles",
+      desc: "Alineadores ultradelgados fabricados a medida, diseñados para comodidad, transparencia y progreso continuo.",
     },
     {
       icon: Target,
-      title: "Predictable Results",
-      desc: "Data-driven sequencing makes every visit count. Predictable outcomes by design, not by chance.",
+      title: "Resultados Predecibles",
+      desc: "Secuenciación basada en datos para que cada visita cuente. Resultados predecibles por diseño, no por casualidad.",
     },
   ];
   return (
     <section id="technology" className="relative z-10 py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
-          eyebrow="Technology"
+          eyebrow="Tecnología"
           title={
             <>
-              Designed with{" "}
-              <span className="text-gradient-cyan">digital precision.</span>
+              Diseñado con{" "}
+              <span className="text-gradient-cyan">precisión digital.</span>
             </>
           }
-          subtitle="A complete digital workflow — from scan to smile — engineered to deliver outcomes you can predict."
+          subtitle="Un flujo digital completo — del escaneo a la sonrisa — diseñado para resultados que podés anticipar."
         />
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
@@ -428,23 +426,23 @@ function Process() {
   const steps = [
     {
       n: "01",
-      title: "Digital Scan",
-      desc: "A 3D intraoral scan captures your smile in minutes — every angle, every micron.",
+      title: "Escaneo Digital",
+      desc: "Un escaneo intraoral 3D captura tu sonrisa en minutos — cada ángulo, cada micrón.",
     },
     {
       n: "02",
-      title: "Treatment Planning",
-      desc: "Our specialists design a personalized movement plan, simulated end-to-end.",
+      title: "Planificación del Tratamiento",
+      desc: "Nuestros especialistas diseñan un plan de movimientos personalizado, simulado de principio a fin.",
     },
     {
       n: "03",
-      title: "Custom Aligners",
-      desc: "Your aligners are 3D-printed and finished to fit only you, comfortably.",
+      title: "Alineadores a Medida",
+      desc: "Tus alineadores se imprimen en 3D y se terminan para adaptarse solo a vos, con total comodidad.",
     },
     {
       n: "04",
-      title: "Smile Transformation",
-      desc: "Wear, swap, and watch your smile evolve — with reviews at every milestone.",
+      title: "Transformación de tu Sonrisa",
+      desc: "Usá, cambiá y mirá cómo evoluciona tu sonrisa — con controles en cada etapa.",
     },
   ];
 
@@ -452,14 +450,14 @@ function Process() {
     <section id="process" className="relative z-10 border-t border-white/5 py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
-          eyebrow="How it works"
+          eyebrow="Cómo funciona"
           title={
             <>
-              From scan to smile,{" "}
-              <span className="text-gradient-cyan">in four steps.</span>
+              Del escaneo a la sonrisa,{" "}
+              <span className="text-gradient-cyan">en cuatro pasos.</span>
             </>
           }
-          subtitle="A modern, transparent workflow. No guesswork — just engineering."
+          subtitle="Un flujo moderno y transparente. Sin suposiciones — solo ingeniería."
         />
         <div className="relative mt-20">
           {/* Connecting line */}
@@ -490,25 +488,25 @@ function Process() {
 /* -------------------- Benefits -------------------- */
 function Benefits() {
   const items = [
-    { icon: Eye, title: "Invisible", desc: "Transparent aligners no one notices." },
-    { icon: Feather, title: "Comfortable", desc: "Soft, smooth, custom to your bite." },
-    { icon: Repeat, title: "Removable", desc: "Eat, brush and live without limits." },
-    { icon: Sparkles, title: "Personalized", desc: "Designed exclusively around your smile." },
-    { icon: ShieldCheck, title: "Predictable", desc: "Simulated results before treatment starts." },
+    { icon: Eye, title: "Invisible", desc: "Alineadores transparentes que nadie nota." },
+    { icon: Feather, title: "Cómodo", desc: "Suaves, lisos y diseñados para tu mordida." },
+    { icon: Repeat, title: "Removible", desc: "Comé, cepillate y viví sin límites." },
+    { icon: Sparkles, title: "Personalizado", desc: "Diseñado exclusivamente para tu sonrisa." },
+    { icon: ShieldCheck, title: "Predecible", desc: "Resultados simulados antes de empezar." },
   ];
 
   return (
     <section id="benefits" className="relative z-10 py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
-          eyebrow="Benefits"
+          eyebrow="Beneficios"
           title={
             <>
-              Built for your life,{" "}
-              <span className="text-gradient-cyan">designed for you.</span>
+              Hecho para tu vida,{" "}
+              <span className="text-gradient-cyan">diseñado para vos.</span>
             </>
           }
-          subtitle="A superior experience in every detail — from the first scan to the final result."
+          subtitle="Una experiencia superior en cada detalle — del primer escaneo al resultado final."
         />
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {items.map((b) => (
@@ -576,20 +574,20 @@ function BeforeAfter() {
           <div>
             <SectionHeader
               align="left"
-              eyebrow="Results"
+              eyebrow="Resultados"
               title={
                 <>
-                  We design the result,{" "}
-                  <span className="text-gradient-cyan">then transform smiles.</span>
+                  Diseñamos el resultado,{" "}
+                  <span className="text-gradient-cyan">y transformamos sonrisas.</span>
                 </>
               }
-              subtitle="Drag the handle to reveal the power of digital planning and invisible orthodontics — engineered, not estimated."
+              subtitle="Deslizá el control para ver el poder de la planificación digital y la ortodoncia invisible — diseñada, no estimada."
             />
             <a
               href="#cta"
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
             >
-              See more cases <ArrowUpRight className="h-4 w-4" />
+              Ver más casos <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
 
@@ -607,7 +605,7 @@ function BeforeAfter() {
           >
             <img
               src={smileAfter}
-              alt="Smile after"
+              alt="Sonrisa después"
               loading="lazy"
               width={1280}
               height={720}
@@ -619,7 +617,7 @@ function BeforeAfter() {
             >
               <img
                 src={smileBefore}
-                alt="Smile before"
+                alt="Sonrisa antes"
                 loading="lazy"
                 width={1280}
                 height={720}
@@ -630,10 +628,10 @@ function BeforeAfter() {
 
             {/* Labels */}
             <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/15 bg-background/60 px-3 py-1 font-mono text-[10px] tracking-[0.22em] text-muted-foreground backdrop-blur">
-              BEFORE
+              ANTES
             </div>
             <div className="pointer-events-none absolute right-4 top-4 rounded-full border border-primary/30 bg-background/60 px-3 py-1 font-mono text-[10px] tracking-[0.22em] text-primary backdrop-blur">
-              AFTER
+              DESPUÉS
             </div>
 
             {/* Handle */}
@@ -661,21 +659,21 @@ function Testimonials() {
   const items = [
     {
       name: "Martina R.",
-      meta: "Age 28 · 9-month treatment",
+      meta: "28 años · Tratamiento de 9 meses",
       quote:
-        "I never thought it would be this easy. The aligners are so comfortable and no one notices I'm wearing them.",
+        "Nunca pensé que sería tan fácil. Los alineadores son súper cómodos y nadie nota que los uso.",
     },
     {
       name: "Tomás L.",
-      meta: "Age 34 · 11-month treatment",
+      meta: "34 años · Tratamiento de 11 meses",
       quote:
-        "Seeing the 3D simulation before starting was incredible. I knew exactly what I was going to get.",
+        "Ver la simulación 3D antes de empezar fue increíble. Sabía exactamente qué iba a obtener.",
     },
     {
       name: "Sofía M.",
-      meta: "Age 31 · 8-month treatment",
+      meta: "31 años · Tratamiento de 8 meses",
       quote:
-        "My smile changed completely and the process was so much simpler than I imagined.",
+        "Mi sonrisa cambió por completo y el proceso fue mucho más simple de lo que imaginaba.",
     },
   ];
 
@@ -683,14 +681,14 @@ function Testimonials() {
     <section id="stories" className="relative z-10 py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-5">
         <SectionHeader
-          eyebrow="Stories"
+          eyebrow="Historias"
           title={
             <>
-              Real people,{" "}
-              <span className="text-gradient-cyan">real results.</span>
+              Historias reales,{" "}
+              <span className="text-gradient-cyan">resultados reales.</span>
             </>
           }
-          subtitle="Hundreds of smiles transformed with the same digital precision."
+          subtitle="Cientos de sonrisas transformadas con la misma precisión digital."
         />
         <div className="mt-16 grid gap-5 md:grid-cols-3">
           {items.map((t, i) => (
@@ -737,24 +735,24 @@ function Testimonials() {
 function FAQ() {
   const faqs = [
     {
-      q: "How long does the treatment take?",
-      a: "Most treatments take between 6 and 18 months, depending on complexity. Your custom plan will give you an exact timeline up front.",
+      q: "¿Cuánto dura el tratamiento?",
+      a: "La mayoría de los tratamientos duran entre 6 y 18 meses, según la complejidad. Tu plan personalizado te dará un cronograma exacto desde el inicio.",
     },
     {
-      q: "Are the aligners really invisible?",
-      a: "Yes. The aligners are made from a transparent, medical-grade material that's virtually undetectable — even up close.",
+      q: "¿Los alineadores son realmente invisibles?",
+      a: "Sí. Los alineadores están fabricados con un material transparente de grado médico, prácticamente imperceptible — incluso de cerca.",
     },
     {
-      q: "Does it hurt?",
-      a: "There's mild pressure during the first few days of each new aligner. Most patients describe it as comfortable compared to traditional braces.",
+      q: "¿Duele?",
+      a: "Hay una presión leve durante los primeros días de cada alineador nuevo. La mayoría lo describe como muy cómodo frente a los brackets tradicionales.",
     },
     {
-      q: "Can I eat and drink normally?",
-      a: "Absolutely. You remove the aligners to eat, drink and brush — then put them back in. No food restrictions.",
+      q: "¿Puedo comer y beber con normalidad?",
+      a: "Totalmente. Te quitás los alineadores para comer, beber y cepillarte — y los volvés a poner. Sin restricciones de comida.",
     },
     {
-      q: "How is it different from other clear aligners?",
-      a: "Our entire workflow is digital and predictive: 3D scans, AI-assisted planning, and milestone reviews. You see the result before treatment begins.",
+      q: "¿En qué se diferencia de otros alineadores transparentes?",
+      a: "Todo nuestro flujo es digital y predictivo: escaneos 3D, planificación asistida por IA y controles en cada etapa. Vé el resultado antes de empezar.",
     },
   ];
   const [open, setOpen] = useState<number | null>(0);
@@ -763,11 +761,11 @@ function FAQ() {
     <section id="faq" className="relative z-10 border-t border-white/5 py-28 sm:py-36">
       <div className="mx-auto max-w-5xl px-5">
         <SectionHeader
-          eyebrow="FAQ"
+          eyebrow="Preguntas frecuentes"
           title={
             <>
-              Questions, answered{" "}
-              <span className="text-gradient-cyan">clearly.</span>
+              Preguntas, respondidas{" "}
+              <span className="text-gradient-cyan">con claridad.</span>
             </>
           }
         />
@@ -826,14 +824,14 @@ function FinalCTA() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-3 py-1.5 text-[10px] font-semibold tracking-[0.18em] text-primary">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                READY WHEN YOU ARE
+                CUANDO QUIERAS EMPEZAR
               </div>
               <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-[-0.02em] sm:text-6xl">
-                Your future smile{" "}
-                <span className="text-gradient-cyan">starts today.</span>
+                Tu próxima sonrisa{" "}
+                <span className="text-gradient-cyan">empieza hoy.</span>
               </h2>
               <p className="mt-5 max-w-lg text-muted-foreground">
-                Book a digital evaluation or chat with our team on WhatsApp. We'll guide you through every step.
+                Reservá una evaluación digital o hablá con nuestro equipo por WhatsApp. Te acompañamos en cada paso.
               </p>
             </div>
             <div className="flex flex-col gap-3">
@@ -841,7 +839,7 @@ function FinalCTA() {
                 href="#"
                 className="group inline-flex items-center justify-between rounded-2xl bg-primary px-6 py-5 text-base font-semibold text-primary-foreground shadow-[0_0_50px_-6px_oklch(0.83_0.14_208/0.7)] transition-transform hover:scale-[1.01]"
               >
-                Book Evaluation
+                Reservar evaluación
                 <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
               <a
@@ -850,7 +848,7 @@ function FinalCTA() {
               >
                 <span className="flex items-center gap-3">
                   <MessageCircle className="h-5 w-5 text-primary" />
-                  WhatsApp Consultation
+                  Consulta por WhatsApp
                 </span>
                 <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
@@ -871,31 +869,31 @@ function Footer() {
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Next-generation invisible orthodontics. Powered by 3D precision and built around you.
+              Ortodoncia invisible de nueva generación. Impulsada por precisión 3D y diseñada en torno a vos.
             </p>
           </div>
 
           <FooterCol
-            title="Explore"
+            title="Explorar"
             items={[
-              { label: "Technology", href: "#technology" },
-              { label: "Process", href: "#process" },
-              { label: "Results", href: "#results" },
-              { label: "Benefits", href: "#benefits" },
+              { label: "Tecnología", href: "#technology" },
+              { label: "Proceso", href: "#process" },
+              { label: "Resultados", href: "#results" },
+              { label: "Beneficios", href: "#benefits" },
             ]}
           />
           <FooterCol
-            title="Company"
+            title="Compañía"
             items={[
-              { label: "Stories", href: "#stories" },
-              { label: "FAQ", href: "#faq" },
-              { label: "Contact", href: "#cta" },
-              { label: "Press", href: "#" },
+              { label: "Historias", href: "#stories" },
+              { label: "Preguntas", href: "#faq" },
+              { label: "Contacto", href: "#cta" },
+              { label: "Prensa", href: "#" },
             ]}
           />
           <div>
             <div className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-foreground">
-              Contact
+              Contacto
             </div>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-3">
@@ -923,10 +921,10 @@ function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} Lumina Ortodoncia Invisible. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Lumina Ortodoncia Invisible. Todos los derechos reservados.</span>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground">Privacy</a>
-            <a href="#" className="hover:text-foreground">Terms</a>
+            <a href="#" className="hover:text-foreground">Privacidad</a>
+            <a href="#" className="hover:text-foreground">Términos</a>
             <a href="#" className="hover:text-foreground">Cookies</a>
           </div>
         </div>
