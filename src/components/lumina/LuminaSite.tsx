@@ -589,6 +589,7 @@ function BeforeAfter() {
   const [pos, setPos] = useState(50);
   const dragging = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const modal = useContactModal();
 
   const updateFromX = (clientX: number) => {
     const el = containerRef.current;
@@ -631,12 +632,12 @@ function BeforeAfter() {
               }
               subtitle="Deslizá el control para ver el poder de la planificación digital y la ortodoncia invisible — diseñada, no estimada."
             />
-            <a
-              href="#cta"
+            <button
+              onClick={() => modal.open("results")}
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
             >
-              Ver más casos <ArrowUpRight className="h-4 w-4" />
-            </a>
+              Quiero mi simulación <ArrowUpRight className="h-4 w-4" />
+            </button>
           </div>
 
           <div
@@ -856,6 +857,7 @@ function FAQ() {
 
 /* -------------------- Final CTA -------------------- */
 function FinalCTA() {
+  const modal = useContactModal();
   return (
     <section id="cta" className="relative z-10 px-5 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
@@ -883,20 +885,22 @@ function FinalCTA() {
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <a
-                href="#"
-                className="group inline-flex items-center justify-between rounded-2xl bg-primary px-6 py-5 text-base font-semibold text-primary-foreground shadow-[0_0_50px_-6px_oklch(0.83_0.14_208/0.7)] transition-transform hover:scale-[1.01]"
+              <button
+                onClick={() => modal.open("final")}
+                className="group inline-flex items-center justify-between rounded-2xl bg-primary px-6 py-5 text-base font-semibold text-primary-foreground shadow-[0_0_50px_-6px_oklch(0.83_0.14_208/0.7)] transition-all hover:scale-[1.02] hover:shadow-[0_0_70px_-4px_oklch(0.83_0.14_208/0.95)]"
               >
-                Reservar evaluación
+                Agendar consulta
                 <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </a>
+              </button>
               <a
-                href="#"
-                className="group inline-flex items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-6 py-5 text-base font-semibold text-foreground backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-6 py-5 text-base font-semibold text-foreground backdrop-blur transition-all hover:scale-[1.01] hover:border-primary/40 hover:bg-white/10"
               >
                 <span className="flex items-center gap-3">
                   <MessageCircle className="h-5 w-5 text-primary" />
-                  Consulta por WhatsApp
+                  Hablar por WhatsApp
                 </span>
                 <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
@@ -945,25 +949,34 @@ function Footer() {
             </div>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" /> hello@luminaortodoncia.com
+                <Mail className="h-4 w-4 text-primary" /> agencianoframe@gmail.com
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" /> +54 11 1234 5678
+                <Phone className="h-4 w-4 text-primary" /> +54 9 341 743-1943
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="h-4 w-4 text-primary" /> Av. Libertador 1234, CABA
               </li>
             </ul>
             <div className="mt-6 flex items-center gap-2">
-              {[Instagram, MessageCircle].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground transition hover:border-primary/40 hover:text-primary"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground transition-all hover:scale-110 hover:border-primary/40 hover:text-primary"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted-foreground transition-all hover:scale-110 hover:border-primary/40 hover:text-primary"
+              >
+                <MessageCircle className="h-4 w-4" />
+              </a>
             </div>
           </div>
         </div>
@@ -978,6 +991,370 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+/* -------------------- Mid CTA (after benefits) -------------------- */
+function MidCTA() {
+  const modal = useContactModal();
+  return (
+    <section className="relative z-10 px-5 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-surface/80 to-background p-8 sm:p-12">
+          <div
+            className="absolute inset-0 opacity-70"
+            style={{
+              background:
+                "radial-gradient(circle at 90% 50%, oklch(0.83 0.14 208 / 0.22), transparent 60%)",
+            }}
+          />
+          <div className="relative flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div>
+              <h3 className="font-display text-2xl font-semibold tracking-tight sm:text-4xl">
+                ¿Listo para conocer tu plan?
+              </h3>
+              <p className="mt-2 max-w-xl text-sm text-muted-foreground sm:text-base">
+                Evaluación digital sin costo. Recibí tu simulación 3D personalizada.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => modal.open("mid")}
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_40px_-6px_oklch(0.83_0.14_208/0.8)] transition-all hover:scale-[1.03]"
+              >
+                Quiero más información
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold transition-all hover:scale-[1.02] hover:border-primary/40"
+              >
+                <MessageCircle className="h-4 w-4 text-primary" /> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------- Pre testimonials CTA (subtle banner) -------------------- */
+function PreTestimonialsCTA() {
+  const modal = useContactModal();
+  return (
+    <section className="relative z-10 px-5 py-10">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 rounded-2xl border border-white/10 bg-surface/40 px-6 py-6 text-center backdrop-blur sm:flex-row sm:justify-between sm:text-left">
+        <div className="flex items-center gap-3">
+          <div className="flex">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+            ))}
+          </div>
+          <p className="text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">+500 sonrisas</span> transformadas con tecnología digital.
+          </p>
+        </div>
+        <button
+          onClick={() => modal.open("pre-testimonials")}
+          className="group inline-flex items-center gap-2 rounded-full bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+        >
+          Solicitar evaluación <ArrowUpRight className="h-4 w-4" />
+        </button>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------- Contact section -------------------- */
+function ContactSection() {
+  return (
+    <section id="contact" className="relative z-10 border-t border-white/5 px-5 py-28 sm:py-36">
+      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] tracking-[0.22em] text-muted-foreground">
+            <span className="h-1 w-1 rounded-full bg-primary" />
+            CONTACTO DIRECTO
+          </div>
+          <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-[-0.025em] sm:text-5xl lg:text-6xl">
+            Hablemos de tu <span className="text-gradient-cyan">próxima sonrisa.</span>
+          </h2>
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Dejanos tus datos y un especialista te contacta en menos de 24hs. Sin compromiso.
+          </p>
+          <ul className="mt-10 space-y-5">
+            <li className="flex items-start gap-4">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                <MessageCircle className="h-5 w-5" />
+              </span>
+              <div>
+                <div className="text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">WhatsApp</div>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-display text-lg font-semibold text-foreground hover:text-primary"
+                >
+                  +54 9 341 743-1943
+                </a>
+              </div>
+            </li>
+            <li className="flex items-start gap-4">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                <Mail className="h-5 w-5" />
+              </span>
+              <div>
+                <div className="text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">Email</div>
+                <a
+                  href="mailto:agencianoframe@gmail.com"
+                  className="font-display text-lg font-semibold text-foreground hover:text-primary"
+                >
+                  agencianoframe@gmail.com
+                </a>
+              </div>
+            </li>
+            <li className="flex items-start gap-4">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                <MapPin className="h-5 w-5" />
+              </span>
+              <div>
+                <div className="text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">Atención</div>
+                <div className="font-display text-lg font-semibold text-foreground">Lun a Vie · 9:00 – 19:00</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div className="relative">
+          <div
+            className="absolute -inset-6 -z-10 rounded-[40px] opacity-60 blur-3xl"
+            style={{ background: "radial-gradient(circle at 50% 30%, oklch(0.83 0.14 208 / 0.25), transparent 70%)" }}
+          />
+          <ContactForm variant="panel" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------- Contact Form (shared) -------------------- */
+function ContactForm({
+  variant = "panel",
+  onSuccess,
+  hiddenSource,
+}: {
+  variant?: "panel" | "modal";
+  onSuccess?: () => void;
+  hiddenSource?: string;
+}) {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") || "").trim();
+    const phone = String(fd.get("phone") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const message = String(fd.get("message") || "").trim();
+
+    if (!name || name.length > 100) return setError("Ingresá tu nombre.");
+    if (!phone || phone.length > 30) return setError("Ingresá un teléfono válido.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255)
+      return setError("Ingresá un email válido.");
+    if (message.length > 1000) return setError("El mensaje es demasiado largo.");
+
+    setStatus("loading");
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          message,
+          source: hiddenSource || "website",
+          _subject: `Nueva consulta · Ortodoncia Invisible (${hiddenSource || "website"})`,
+          _template: "table",
+        }),
+      });
+      if (!res.ok) throw new Error("network");
+      setStatus("success");
+      form.reset();
+      onSuccess?.();
+    } catch {
+      setStatus("error");
+      setError("No pudimos enviar el formulario. Probá de nuevo o escribinos por WhatsApp.");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div
+        className={`flex flex-col items-center justify-center rounded-3xl border border-primary/30 bg-surface/60 p-10 text-center backdrop-blur ${
+          variant === "panel" ? "min-h-[480px]" : ""
+        }`}
+      >
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 text-primary shadow-[0_0_40px_-4px_oklch(0.83_0.14_208/0.7)]">
+          <Check className="h-7 w-7" />
+        </div>
+        <h3 className="mt-6 font-display text-2xl font-semibold">¡Gracias!</h3>
+        <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+          Recibimos tu consulta. Un especialista te contactará a la brevedad.
+        </p>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-7 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+        >
+          <MessageCircle className="h-4 w-4" />
+          O escribinos por WhatsApp
+        </a>
+      </div>
+    );
+  }
+
+  const inputBase =
+    "w-full rounded-xl border border-white/10 bg-surface/60 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/60 transition focus:border-primary/50 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary/20";
+
+  return (
+    <form
+      onSubmit={submit}
+      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-surface/60 p-7 backdrop-blur-xl sm:p-9 ${
+        variant === "panel" ? "shadow-[0_30px_120px_-20px_oklch(0_0_0/0.7)]" : ""
+      }`}
+    >
+      <div className="mb-6">
+        <h3 className="font-display text-xl font-semibold sm:text-2xl">Solicitá tu evaluación</h3>
+        <p className="mt-1 text-sm text-muted-foreground">Respuesta en menos de 24hs.</p>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="sm:col-span-2">
+          <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Nombre</label>
+          <input name="name" required maxLength={100} className={inputBase} placeholder="Tu nombre" />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Teléfono</label>
+          <input name="phone" required maxLength={30} className={inputBase} placeholder="+54 9 ..." />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Email</label>
+          <input
+            name="email"
+            type="email"
+            required
+            maxLength={255}
+            className={inputBase}
+            placeholder="vos@email.com"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Mensaje</label>
+          <textarea
+            name="message"
+            rows={4}
+            maxLength={1000}
+            className={`${inputBase} resize-none`}
+            placeholder="Contanos brevemente qué buscás."
+          />
+        </div>
+      </div>
+      {error && (
+        <div className="mt-4 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-2.5 text-sm text-destructive">
+          {error}
+        </div>
+      )}
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground shadow-[0_0_40px_-8px_oklch(0.83_0.14_208/0.9)] transition-all hover:scale-[1.01] hover:shadow-[0_0_60px_-4px_oklch(0.83_0.14_208/1)] disabled:opacity-60"
+      >
+        {status === "loading" ? (
+          <>
+            <Loader2 className="h-4 w-4 animate-spin" /> Enviando...
+          </>
+        ) : (
+          <>
+            <Send className="h-4 w-4" /> Enviar consulta
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </>
+        )}
+      </button>
+      <p className="mt-4 text-center text-[11px] text-muted-foreground">
+        Tu información es confidencial. Solo la usamos para contactarte.
+      </p>
+    </form>
+  );
+}
+
+/* -------------------- Contact Modal -------------------- */
+function ContactModal({
+  open,
+  onClose,
+  source,
+}: {
+  open: boolean;
+  onClose: () => void;
+  source?: string;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center">
+      <div
+        className="absolute inset-0 bg-background/80 backdrop-blur-md animate-fade-in"
+        onClick={onClose}
+      />
+      <div className="relative z-10 w-full max-w-lg animate-scale-in p-4 sm:p-6">
+        <div className="relative">
+          <button
+            onClick={onClose}
+            aria-label="Cerrar"
+            className="absolute -top-2 -right-2 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-surface text-muted-foreground transition hover:scale-110 hover:border-primary/40 hover:text-primary"
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <ContactForm variant="modal" onSuccess={() => {}} hiddenSource={source} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------- WhatsApp floating button -------------------- */
+function WhatsAppFloat() {
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Hablar por WhatsApp"
+      className="group fixed bottom-5 right-5 z-[90] flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-3 text-white shadow-[0_10px_40px_-8px_rgba(37,211,102,0.7)] transition-all hover:scale-105 hover:shadow-[0_15px_50px_-6px_rgba(37,211,102,0.9)] sm:bottom-6 sm:right-6"
+    >
+      <span className="absolute inset-0 -z-10 rounded-full bg-[#25D366] opacity-60 blur-xl animate-pulse-glow" />
+      <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden="true">
+        <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
+      </svg>
+      <span className="hidden text-sm font-semibold sm:inline">WhatsApp</span>
+    </a>
   );
 }
 
