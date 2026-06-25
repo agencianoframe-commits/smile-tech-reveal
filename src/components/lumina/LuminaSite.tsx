@@ -1,4 +1,3 @@
-import logo from "./logoalargadonegro.png";
 import { createContext, useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
