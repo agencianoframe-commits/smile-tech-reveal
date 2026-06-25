@@ -193,7 +193,9 @@ function Logo() {
           <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="currentColor" />
         </svg>
       </div>
-     <img src="/logoalargadonegro.png" alt="Logo" className="h-8 w-auto" />
+  import logo from "./logoalargadonegro.png";
+
+<img src={logo} alt="Logo" />
     </a>
   );
 }
