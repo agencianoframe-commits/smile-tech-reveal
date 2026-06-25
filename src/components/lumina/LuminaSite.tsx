@@ -197,7 +197,7 @@ function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
               </span>
-              NEXT GENERATION ORTODONCIA INVISIBLE
+              ORTODONCIA INVISIBLE DE NUEVA GENERACIÓN
             </div>
 
             <h1 className="mt-6 font-display text-[40px] font-semibold leading-[1.02] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-7xl">
@@ -831,7 +831,7 @@ function FinalCTA() {
                 <span className="text-gradient-cyan">empieza hoy.</span>
               </h2>
               <p className="mt-5 max-w-lg text-muted-foreground">
-                Book a digital evaluation or chat with our team on WhatsApp. We'll guide you through every step.
+                Reservá una evaluación digital o hablá con nuestro equipo por WhatsApp. Te acompañamos en cada paso.
               </p>
             </div>
             <div className="flex flex-col gap-3">
@@ -869,7 +869,7 @@ function Footer() {
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Next-generation invisible orthodontics. Powered by 3D precision and built around you.
+              Ortodoncia invisible de nueva generación. Impulsada por precisión 3D y diseñada en torno a vos.
             </p>
           </div>
 
@@ -887,8 +887,8 @@ function Footer() {
             items={[
               { label: "Historias", href: "#stories" },
               { label: "Preguntas", href: "#faq" },
-              { label: "Contact", href: "#cta" },
-              { label: "Press", href: "#" },
+              { label: "Contacto", href: "#cta" },
+              { label: "Prensa", href: "#" },
             ]}
           />
           <div>
