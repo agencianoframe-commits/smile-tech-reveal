@@ -1,4 +1,4 @@
-import logo from "@/assets/logoalargadonegro.png";
+import logo from "src/assets/logoalargadonegro.png";
 import { createContext, useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
