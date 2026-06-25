@@ -187,17 +187,14 @@ function Nav() {
 function Logo() {
   return (
     <a href="#top" className="flex items-center gap-2.5">
-      <div className="relative">
-        <div className="absolute inset-0 rounded-md bg-primary/40 blur-md" />
-        <svg viewBox="0 0 24 24" className="relative h-6 w-6 text-primary" fill="none">
-          <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="currentColor" />
-        </svg>
-      </div>
-  import logo from "./logoalargadonegro.png";
-
-<img src={logo} alt="Logo" />
+      <img
+        src={logo}
+        alt="Logo"
+        className="h-6 w-auto"
+      />
     </a>
   );
+}
 }
 
 /* -------------------- Hero -------------------- */
