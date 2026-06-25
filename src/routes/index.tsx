@@ -4,16 +4,16 @@ import { LuminaSite } from "@/components/lumina/LuminaSite";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lumina — Next Generation Invisible Orthodontics" },
+      { title: "Lumina — Ortodoncia Invisible de Nueva Generación" },
       {
         name: "description",
         content:
-          "Advanced 3D scanning and custom invisible aligners designed to create predictable, comfortable and precise smiles.",
+          "Escaneo 3D avanzado y alineadores invisibles a medida para sonrisas predecibles, cómodas y precisas.",
       },
-      { property: "og:title", content: "Lumina — Invisible Orthodontics" },
+      { property: "og:title", content: "Lumina — Ortodoncia Invisible" },
       {
         property: "og:description",
-        content: "Precision technology for the smile you want.",
+        content: "Tecnología de precisión para la sonrisa que querés.",
       },
       { property: "og:type", content: "website" },
     ],
