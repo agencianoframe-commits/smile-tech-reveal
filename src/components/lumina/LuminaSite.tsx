@@ -1,4 +1,3 @@
-import logo from "@/assets/logoalargadonegro.png";
 import { createContext, useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
@@ -182,13 +181,12 @@ function Nav() {
       </div>
     </header>
   );
-}
-
+  }
 function Logo() {
   return (
     <a href="#top" className="flex items-center gap-2.5">
       <img
-        src={logo}
+        src="/logoalargadonegro.png"
         alt="Logo"
         className="h-6 w-auto"
       />
