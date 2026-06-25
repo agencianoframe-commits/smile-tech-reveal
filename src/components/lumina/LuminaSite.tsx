@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
   ScanLine,
@@ -17,6 +17,12 @@ import {
   Mail,
   MapPin,
   Phone,
+  X,
+  Check,
+  Loader2,
+  Send,
+  CalendarCheck,
+  Star,
 } from "lucide-react";
 import heroTeeth from "@/assets/hero-teeth.jpg";
 import smileBefore from "@/assets/smile-before.jpg";
@@ -31,22 +37,50 @@ const NAV = [
   { label: "Preguntas", href: "#faq" },
 ];
 
+const WHATSAPP_NUMBER = "5493417431943";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hola! Quisiera más información sobre la ortodoncia invisible.",
+)}`;
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/agencianoframe@gmail.com";
+
+/* -------------------- Contact Modal context -------------------- */
+type ModalCtx = { open: (source?: string) => void };
+const ContactModalContext = createContext<ModalCtx>({ open: () => {} });
+const useContactModal = () => useContext(ContactModalContext);
+
 export function LuminaSite() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [source, setSource] = useState<string | undefined>();
+
+  const ctx: ModalCtx = {
+    open: (s) => {
+      setSource(s);
+      setModalOpen(true);
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased">
-      <BackgroundFX />
-      <Nav />
-      <Hero />
-      <Logos />
-      <Technology />
-      <Process />
-      <Benefits />
-      <BeforeAfter />
-      <Testimonials />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
-    </div>
+    <ContactModalContext.Provider value={ctx}>
+      <div className="min-h-screen bg-background text-foreground antialiased">
+        <BackgroundFX />
+        <Nav />
+        <Hero />
+        <Logos />
+        <Technology />
+        <Process />
+        <Benefits />
+        <MidCTA />
+        <BeforeAfter />
+        <PreTestimonialsCTA />
+        <Testimonials />
+        <FAQ />
+        <FinalCTA />
+        <ContactSection />
+        <Footer />
+        <WhatsAppFloat />
+        <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} source={source} />
+      </div>
+    </ContactModalContext.Provider>
   );
 }
 
@@ -65,6 +99,7 @@ function BackgroundFX() {
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const modal = useContactModal();
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -99,13 +134,13 @@ function Nav() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a
-              href="#cta"
-              className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-foreground backdrop-blur transition hover:border-primary/40 hover:bg-primary/10 sm:inline-flex"
+            <button
+              onClick={() => modal.open("nav")}
+              className="group hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_0_30px_-8px_oklch(0.83_0.14_208/0.9)] transition-all hover:scale-[1.03] hover:shadow-[0_0_40px_-4px_oklch(0.83_0.14_208/0.95)] sm:inline-flex"
             >
-              Reservar evaluación
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+              Agendar consulta
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
             <button
               onClick={() => setOpen((o) => !o)}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 lg:hidden"
@@ -131,6 +166,15 @@ function Nav() {
                   {n.label}
                 </a>
               ))}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  modal.open("nav-mobile");
+                }}
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+              >
+                Agendar consulta <ArrowUpRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
         )}
@@ -162,6 +206,7 @@ function Logo() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const modal = useContactModal();
 
   useEffect(() => {
     const el = ref.current;
@@ -182,9 +227,9 @@ function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative z-10 pt-32 pb-20 sm:pt-40 lg:pt-44 lg:pb-32">
+    <section id="top" className="relative z-10 pt-32 pb-24 sm:pt-40 lg:pt-48 lg:pb-40">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
+        <div className="grid items-center gap-16 lg:grid-cols-[1fr_1.15fr] lg:gap-14">
           {/* Visual first on mobile */}
           <div ref={ref} className="order-first lg:order-last">
             <HeroVisual tilt={tilt} />
@@ -200,43 +245,46 @@ function Hero() {
               ORTODONCIA INVISIBLE DE NUEVA GENERACIÓN
             </div>
 
-            <h1 className="mt-6 font-display text-[40px] font-semibold leading-[1.02] tracking-[-0.03em] text-foreground sm:text-6xl lg:text-7xl">
-              La sonrisa que querés.
+            <h1 className="mt-7 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.035em] text-foreground sm:text-7xl lg:text-[88px]">
+              <span className="text-gradient">La sonrisa</span>
               <br />
-              <span className="text-gradient-cyan">Impulsada por</span>{" "}
-              <span className="text-gradient">tecnología de precisión.</span>
+              <span className="text-gradient-cyan">que querés.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Escaneo 3D avanzado y alineadores invisibles a medida, diseñados para lograr resultados predecibles, cómodos y precisos — con el rigor de una compañía de tecnología.
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              Alineadores invisibles diseñados con escaneo 3D y precisión digital. Resultados predecibles, sin brackets.
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a
-                href="#cta"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_40px_-6px_oklch(0.83_0.14_208/0.7)] transition-transform hover:scale-[1.02]"
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => modal.open("hero")}
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-[0_0_60px_-6px_oklch(0.83_0.14_208/0.85)] transition-all hover:scale-[1.03] hover:shadow-[0_0_80px_-4px_oklch(0.83_0.14_208/1)]"
               >
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                Reservar evaluación
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <CalendarCheck className="h-5 w-5" />
+                Solicitar evaluación gratuita
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
               <a
-                href="#technology"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-4 text-base font-semibold text-foreground backdrop-blur transition-all hover:scale-[1.02] hover:border-primary/40 hover:bg-white/10"
               >
-                Conocer más
+                <MessageCircle className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
+                WhatsApp
               </a>
             </div>
 
-            <div className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-6">
+            <div className="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-7">
               {[
                 { k: "3D", v: "Escaneo de alta precisión" },
                 { k: "AI", v: "Planificación de tratamiento" },
                 { k: "100%", v: "Alineadores a medida" },
               ].map((s) => (
                 <div key={s.k}>
-                  <div className="font-display text-2xl font-semibold text-foreground">{s.k}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">{s.v}</div>
+                  <div className="font-display text-3xl font-semibold text-gradient-cyan">{s.k}</div>
+                  <div className="mt-2 text-xs text-muted-foreground">{s.v}</div>
                 </div>
               ))}
             </div>
@@ -249,7 +297,7 @@ function Hero() {
 
 function HeroVisual({ tilt }: { tilt: { x: number; y: number } }) {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[620px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[720px]">
       {/* Glow rings */}
       <div
         className="absolute inset-0 rounded-full blur-3xl"
