@@ -906,22 +906,13 @@ function FinalCTA() {
 }
 
 /* -------------------- Footer -------------------- */
-function Footer() { 
+function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/5 bg-surface/40 px-5 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>function Logo() {
-  return (
-    <a href="#top" className="flex items-center gap-2.5">
-      <img
-        src="/logoalargadonegro.png"
-        alt="Logo"
-        className="h-10 w-auto"
-      />
-    </a>
-  );
-}
+          <div>
+            <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Ortodoncia invisible de nueva generación. Impulsada por precisión 3D y diseñada en torno a vos.
             </p>
