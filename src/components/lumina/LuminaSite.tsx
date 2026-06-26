@@ -906,7 +906,7 @@ function FinalCTA() {
 }
 
 /* -------------------- Footer -------------------- */
-function Footer() {
+function Footer() { 
   return (
     <footer className="relative z-10 border-t border-white/5 bg-surface/40 px-5 py-16">
       <div className="mx-auto max-w-7xl">
