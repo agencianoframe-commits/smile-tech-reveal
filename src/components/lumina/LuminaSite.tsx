@@ -186,7 +186,7 @@ function Logo() {
   return (
     <a href="#top" className="flex items-center gap-2.5">
       <img
-        src="/logoalargadonegro.png"
+        src="/logoalargadotodoblanco.png"
         alt="Logo"
         className="h-6 w-auto"
       />
