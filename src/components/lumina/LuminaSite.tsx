@@ -37,10 +37,8 @@ const NAV = [
   { label: "Preguntas", href: "#faq" },
 ];
 
-const WHATSAPP_NUMBER = "5493417431943";
-const WHATSAPP_URL = `https://wa.me/${5493417431943}?text=${encodeURIComponent(
-  "Hola! Quisiera más información sobre la ortodoncia invisible.",
-)}`;
+const WHATSAPP_URL =
+  "https://wa.me/5493417431943?text=Hola,%20quiero%20más%20información%20sobre%20Ortodoncia%20Invisible";
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/agencianoframe@gmail.com";
 
 /* -------------------- Contact Modal context -------------------- */
